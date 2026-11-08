@@ -125,16 +125,16 @@ Masukkan produk baru
 
 `GET` `http://localhost:3000/products`
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 `GET` `http://localhost:3000/products/1`
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 `GET` `http://localhost:3000/products/999`
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 `POST` `http://localhost:3000/products`
 
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
