@@ -92,8 +92,41 @@ const updateProduct = async (req, res) => {
     }
 };
 
+// DELETE /products/:id
+const deleteProduct = async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+
+        if (!Number.isInteger(id) || id <= 0) {
+            return res.status(400).json({
+                message: 'ID produk tidak valid'
+            });
+        }
+
+        await prisma.product.delete({
+            where: { id: id }
+        });
+
+        res.status(200).json({
+            message: 'Produk berhasil dihapus'
+        });
+    } catch (error) {
+        if (error.code === 'P2025') {
+            return res.status(404).json({
+                message: 'Produk tidak ditemukan'
+            });
+        }
+
+        console.error(error);
+        res.status(500).json({
+            message: 'Terjadi kesalahan server'
+        });
+    }
+};
+
 module.exports = {
     getAllProducts,
     createProduct,
-    updateProduct
+    updateProduct,
+    deleteProduct
 };
